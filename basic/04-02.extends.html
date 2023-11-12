@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>extends</title>
+    <script>
+        /*
+        extends = 부모 클래스에서 상속받는 자손 클래스를 의미한다.
+        - 상속 : 부모클래스에 있는 생성자 함수, 메서드에 자식 요소의 값을 전달한다.
+
+        비슷한 값들을 새로 작성하지 않고 기존의 코드를 이용해서 코드의 중복을 방지하고 부모 클래스의 수정으로 모든 자식 요소의 값이 바뀔 수 있기 때문에 관리면에서도 편한 장점이 있다.
+
+        단점 : 다중 상속이 불가능(자바스크립트 자체의 단점)
+        자바스크립트에서는 무조건 단일 상속만 허용하고 있다.
+        
+        
+        */
+
+        class Name{
+            constructor(last, first){
+                this.last = last;
+                this.first = first;
+            }
+            result(){
+                return `제 이름은 ${this.last}${this.first}입니다.`
+            }
+        }
+
+        class Local extends Name{ //Name의 값을 상속받는 Local클래스
+            constructor(last, first, local){
+                super(last, first)
+                this.local = local;
+            }
+            result02(){
+                return `${super.result()} 그리고 사는 곳은 ${this.local}입니다.`;
+            }
+        }
+
+        let person01 = new Name('손', '흥민');
+        console.log(person01.result());
+        let person02 = new Local('손', '흥민', '서울');
+        console.log(person02.result02())
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

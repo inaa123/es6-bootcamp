@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화살표 함수</title>
+    <script>
+        //기본적인 함수 표현식
+        function test01(){
+            console.log('test01')
+        }
+        test01();
+
+        //변수 선언식
+        let test02 = function test(){ //test처럼 함수 이름을 넣을 수 있지만 test으로 호출은 X
+            console.log('test02')
+        }
+        test02();
+        //test(); error
+
+        //새로 추가된 화살표 함수
+        test03 = () => {
+            console.log('test03');
+            // =>가 function을 대신한다.
+        }
+        test03(); //호출방식은 같음
+
+        test04 = () => console.log('test04');
+        //표현식의 내용이 하나인 경우 {}생략해도 된다.
+        test04();
+
+        test05 = (x) => console.log(x*x);
+        test05(10); //인수10 매개변수x에 전달
+
+        test06 = x => console.log(x*x);
+        //매개변수의 값이 하나일 때엔 ()가 생략되어도 된다.
+        test06(3);
+
+        /*
+        화살표 함수와 일반함수의 차이점
+        화살표함수 = 간단한 기능이나 일관된 값을 유지하는 로직에서 사용한다.
+        (로직이 복잡해지면 this사용이 많아짐. 그때 화살표함수를 쓰면 전혀다른 결과값이 나옴..)
+        일반함수 = 복잡한 로직이나 생성자 및 객체를 사용해야 할 때 사용한다.
+        
+        사용범위가 나눠지는 이유는 this의 범위가 다르기 때문이다.
+
+        
+        */
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

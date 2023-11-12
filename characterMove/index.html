@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>MXM</title>
+	<link rel="stylesheet" href="css/style.css">
+	<script src="./script02.js"></script>
+	<script>
+		window.onload = () => {
+			new MotionMenu({
+				btn: '.list',
+				title: '.title',
+				chaImg: '.pic'
+			}) //move는 따로. 지금은 버튼 클릭할때 타이틀,이미지바꾸는거 먼저할 것
+		}
+	</script>
+
+
+</head>
+<body>
+	<main>
+		<!-- 배경 영상 -->
+		<figure>
+			<video src="img/mx2.mp4" muted autoplay loop></video>
+		</figure>
+
+		<!-- 로고 -->
+		<h1>
+			<img src="img/logo.png" alt="MXM">
+		</h1>
+
+		<!-- 캐릭터 선택 버튼 -->
+		<ul class="list">
+			<li class="on"></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+			<li></li>
+		</ul>
+
+		<!-- 캐릭터 이름 리스트 -->
+		<ul class="title">
+			<li class="on">
+				<p>Vita</p>
+				<span>비타</span>
+			</li>
+			<li>
+				<p>Mondo Jax</p>
+				<span>몬도 잭스</span>
+			</li>
+			<li>
+				<p>Asle</p>
+				<span>에이슬</span>
+			</li>
+			<li>
+				<p>Death Knight</p>
+				<span>데스나이트</span>
+			</li>
+			<li>
+				<p>DR. Raoul</p>
+				<span>닥터 라울</span>
+			</li>
+			<li>
+				<p>Krodede</p>
+				<span>크로메데</span>
+			</li>
+			<li>
+				<p>Tae Jin</p>
+				<span>태진</span>
+			</li>
+			<li>
+				<p>V-Merang</p>
+				<span>V-메랑</span>
+			</li>
+			<li>
+				<p>Jing Tai</p>
+				<span>징타이</span>
+			</li>
+		</ul>
+
+		<!-- 캐릭터 이미지 리스트 -->
+		<ul class="pic">
+			<li class="on"><img src="img/ch1.png" alt="charactor1"></li>
+			<li><img src="img/ch2.png" alt="charactor2"></li>
+			<li><img src="img/ch3.png" alt="charactor3"></li>
+			<li><img src="img/ch4.png" alt="charactor4"></li>
+			<li><img src="img/ch5.png" alt="charactor5"></li>
+			<li><img src="img/ch6.png" alt="charactor6"></li>
+			<li><img src="img/ch7.png" alt="charactor7"></li>
+			<li><img src="img/ch8.png" alt="charactor8"></li>
+			<li><img src="img/ch9.png" alt="charactor9"></li>
+		</ul>
+
+		<!-- 꾸밈요소 -->
+		<p class="deco1">
+			<img src="img/txt.png">
+		</p>
+		<p class="deco2">
+			<img src="img/txt2.png">
+		</p>
+		<p class="deco3">
+			<img src="img/or2.png">
+		</p>
+	</main>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

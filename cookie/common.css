@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+}
+.del{
+    padding: 24px;
+    border-radius: 5px;
+    background: pink;
+    color: #ffffff;
+    display: inline-flex;
+    align-items: center;
+    margin: 24px;
+}
+
+#popUp{
+    background-color: lightgray;
+    width: 500px;
+    padding: 60px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+}
+
+.wrap{
+    display:flex;
+    justify-content: space-between;
+    
+    padding-top: 24px;
+}
+
+.closeBtn{
+    text-decoration: none;
+    padding: 6px;
+    background: black;
+    color: #ffffff;
+}

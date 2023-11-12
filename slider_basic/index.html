@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!--<script src="./script.js"></script>-->
+    <script src="./script02.js"></script>
+    <script>
+        window.onload = () => {
+            new Slider('#slider', {
+                btns : '.navi',
+                panel : '.panel',
+                speed : 500,
+                callback : (index)=>{ //callback도 옵션(opt)임
+                    let circle = document.querySelector('#circle');
+                    circle.className = '';
+                    circle.classList.add(`rot${index}`);
+                }
+            })
+        }
+    </script>
+
+</head>
+<body>
+    <main>
+        <h1><img src="img/logo.png" alt="Mini Cooper"></h1>
+
+        <figure id="slider">
+            <ul class="panel">
+                <li class="on">
+                    <p>Silver White</p>
+                </li>
+                <li>
+                    <p>Deep Yellow</p>
+                </li>
+                <li>
+                    <p>Aqua Green</p>
+                </li>
+                <li>
+                    <p>Sky Blue</p>
+                </li>
+                <li>
+                    <p>Hot Pink</p>
+                </li>
+            </ul>
+
+            <ul class="navi"> 
+                <li class="on"><a href="#">Silver White</a></li>
+                <li><a href="#">Deep Yellow</a></li>
+                <li><a href="#">Aqua Green</a></li>
+                <li><a href="#">Sky Blue</a></li>
+                <li><a href="#">Hot Pink</a></li>
+            </ul>
+        </figure>
+
+        <img id="circle" src="img/circle1.png" alt="링메뉴">
+    </main>
+</body>
+</html>

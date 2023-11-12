@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!--
+        swiper 슬라이드 라이브러리 (스와이퍼,슬릭 라이브러리 많이 사용)
+        https://swiperjs.com/
+        get start
+        Use Swiper from CDN부분 복붙
+
+        스와이퍼를 사용할 때에는 일정한 규칙을 지켜야 한다.
+        1. 선택자를 변경하지 말 것
+        선택자는 항상 swiper-container > swiper-wrapper > swiper-slide의 순서를 무조건 가지고 있어야 한다.
+       
+        css변경하고 싶으면 미리 만들어져있는 선택자를 찾아서 겹치면 됨.(찾는게 귀찮을듯ㅠㅠ)
+    -->
+
+    <script>
+        window.onload = () => {
+            const slider = new Swiper('.swiper-container',{
+                autoplay : {
+                    delay : 3000, //다음 슬라이드로 넘어가는 시간(ms);
+                    //disableOnInteraction 자동으로 돌리다가 인위적인 행위들어갈때(이벤트 중첩시) 하나는 멈춰야 함. ex자동슬라이드 할때 내가 직접 스와이프하면 자동멈추고 일정시간 지난 후 다시 자동시작
+                    disableOnInteraction : false, 
+                    //disableOnInteraction 스와이프 후 자동 재생 여부. 기본값은 false
+                    //true면 스와이퍼 후 자동재생이 되지 않음.
+                    //자동재생할려면 생략해도되고, false를 넣어도 됨
+                },
+                loop : true,
+                loopAdditionalSlides : 1, //loop상태일 때 마지막 번호가 꼬이는 오류를 잡아주는 코드다.
+                slidesPerView : 3, //한 화면에 보여질 슬라이드의 갯수, 기본값은'auto' // 반응형이 추가된 경우 breakpoint ............
+                spaceBetween : 20, //슬라이드와 슬라이드 사이 여백 
+                //autoHeight : true, //slider-wrapper가 활성 슬라이더의 높이에 자동으로 조절해주는 기능이다.
+                centeredSlides : true, //슬라이드가 가운데로 배치 되도록한다.(슬라이더가 여러개가 보여지는 경우 active가 들어간 slider가 기준)
+                allowTouchMove : false,//스와이퍼 기능 정지(마우스로X 버튼으로만 움직일 수 있음)
+                //direction : 'vertical', //슬라이드 방향. 기본값은 가로방향(horizontal)
+                speed : 1000, //슬라이드가 전환될 때 걸리는 시간
+                //delay는 1 -> 2넘어갈 때 걸ㄹ리는 시간. speed는 1 -> 2넘어갈때 걸리는 전환시간
+                ally : false, //접근성 매개변수(접근성 대체텍스트 작성) . 거의 안쓰는 옵션
+                
+                navigation : { //좌우 버튼 설정. 사용자가 따로 만든 클래스 연결도 가능하다.
+                    prevEl : '.swiper-button-prev',
+                    nextEl : '.swiper-button-next'
+                },
+                pagination : {
+                    el : '.swiper-pagination',
+                    clickable : true, //클릭 여부 설정 기본값 false
+                    type : 'fraction', // 버튼 모양 설정. 기본값은bullet, fraction (2개밖에 없음)
+                },
+                scrollbar : {
+                    el : '.swiper-scrollbar',
+                },
+                effect : 'slide',
+                //슬라이드 전환 효과(기본값 : slide) fade/cube/flip/coverflow/card/creative
+
+                breakpoints : { //반응형 하고 싶을 때?
+                    768 : { //768이상  단위 생략가능 768보다 작아지면 다시 3개
+                        slidesPerView : 2,
+                    },
+                    1024 : { //1024이상
+                        slidesPerView : 3,
+                    }
+                }
+
+            }); //원하는 영역을 넣어준다.('.swiper-container')
+        }
+    </script>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }        
+        .slide1{
+            width: 100%;
+            height: 100vh;
+        }
+        .swiper-slide{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 100px;
+        }
+        .swiper-slide:nth-of-type(1){
+            background: lightblue;
+        }
+        .swiper-slide:nth-of-type(2){
+            background: lightcoral;
+        }
+        .swiper-slide:nth-of-type(3){
+            background: lightgreen;
+        }
+        .swiper-slide:nth-of-type(4){
+            background: lightslategrey;
+        }
+        .swiper-slide:nth-of-type(5){
+            background: lightseagreen;
+        }
+        .swiper-slide:nth-of-type(6){
+            background: lightsalmon;
+        }
+    </style>
+</head>
+<body>
+    <!--스와이퍼 넣을 영역만들기-->
+    <div class="swiper-container slide1">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">item1</div>
+            <div class="swiper-slide">item2</div>
+            <div class="swiper-slide">item3</div>
+            <div class="swiper-slide">item4</div>
+            <div class="swiper-slide">item5</div>
+            <div class="swiper-slide">item6</div>
+        </div>
+        <div class="swiper-pagination"></div> <!--dot! 넣어도 안보임. script에 넣어줘야해!-->
+
+        <div class="swiper-button-prev"></div> <!--css적용되어 생성은 되지만, 이벤트는 따로 줘야한다!-->
+        <div class="swiper-button-next"></div>
+        <div class="swiper-scrollbar"></div>
+    </div>
+</body>
+</html>

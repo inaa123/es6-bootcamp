@@ -1,0 +1,131 @@
+/*리셋*/
+*{
+    padding: 0px;
+    margin: 0px;
+    list-style: none;
+    text-decoration: none;
+}
+
+body,html{
+    background: #ddd;
+}
+header{
+    width: 100%;
+    display: flex;
+    background: navy;
+    justify-content: center;
+}
+.inner{
+    padding: 0px 60px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+}
+.gnb{
+    display: flex;
+    gap: 40px;
+}
+.gnb > li{
+    width: 120px;
+    position: relative;
+    transition: 250ms;
+    z-index: 1;
+}
+.gnb > li > a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    font-weight: bold;
+}
+
+.gnb > li > a:before{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    /*top: 0px;*/
+    top:-100%; /*안보여야함*/
+    left: 0px;
+    transition: 250ms;
+    z-index: -1;
+    
+}
+.gnb > li:nth-of-type(1) > a:before{
+    background: darkcyan;
+}
+.gnb > li:nth-of-type(2) > a:before{
+    background: coral;
+}
+.gnb > li:nth-of-type(3) > a:before{
+    background: cyan;
+}
+.gnb > li:nth-of-type(4) > a:before{
+    background: pink;
+}
+.gnb > li:nth-of-type(5) > a:before{
+    background: #333;
+}
+.gnb > li:nth-of-type(6) > a:before{
+    background:  goldenrod;
+}
+.gnb > li:hover > a:before{
+    top: 0px;
+}
+
+/*subMenu*/
+.gnb .subMenu{
+    position: absolute;
+    top: 50px;
+    left:0px;
+    width: 160px;
+    background: #fff;
+    /*padding: 12px 24px;*/
+    padding: 0px;
+    box-sizing: border-box; /*겹쳐지는거없앰*/
+   /* line-height: 50px; 높이값대신 lineheight로*/
+   line-height: 0;
+    opacity: 0;
+    transition: opacity 300ms, top 300ms;
+    overflow: hidden;
+}
+
+/*.gnb > li:hover .subMenu{ script로 바꿀것. script코드는 간단한게 좋고 css로 해결할 수 있는 건 css로 해결*/
+.gnb .subMenu.on{
+    opacity: 1;
+    top: 80px;
+    line-height: 50px;
+    padding: 12px 24px;
+}
+
+.gnb .subMenu a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: #333;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.gnb .subMenu a span{
+    display: inline-block;
+    position: relative;
+}
+.gnb .subMenu a span:after{
+    content: "";
+    /*width: 100%; hover시 보여야함*/
+    width: 0px;
+    height: 2px;
+    position: absolute;
+    left: 0px;
+    bottom: 8px;
+    background: black;
+    transition: 250ms;
+}
+.gnb .subMenu a:hover span:after{
+    width: 100%;
+    padding-left: 20px;
+}

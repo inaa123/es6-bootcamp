@@ -1,0 +1,129 @@
+@charset "UTF-8";
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+ul, ol, li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    outline: 0;
+}
+h1 {
+    position: fixed;
+    top: 20px;
+    left: 30px;
+    z-index: 2;
+}
+figure {
+    position: absolute; 
+    top: 0px;
+    left: 0px;
+    width: 100%; /*화면의 백퍼*/
+    height: 100vh;
+    overflow: hidden;
+}
+figure .panel {
+    width: calc(100% * 5);
+    height: 100%;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+figure .panel li {
+    width: calc(100% / 5);
+    height: 100%;
+    float: left;
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+figure .panel li:nth-of-type(1) {
+    background-image:  url(../img/pic1.jpg);
+}
+figure .panel li:nth-of-type(2) {
+    background-image:  url(../img/pic2.jpg);
+}
+figure .panel li:nth-of-type(3) {
+    background-image:  url(../img/pic3.jpg);
+}
+figure .panel li:nth-of-type(4) {
+    background-image:  url(../img/pic4.jpg);
+}
+figure .panel li:nth-of-type(5) {
+    background-image:  url(../img/pic5.jpg);
+}
+figure .panel li p {
+    position: absolute;
+    top: 50%;
+    font: 30px/1 "arial";
+    color: #fff;
+    text-shadow: 1px 1px 1px #444;
+    margin-top: -15px;
+    opacity: 0;
+    right: 150px;
+    transition: 1s;
+}
+figure .panel li.on p {
+    opacity: 1;
+    right: 200px;
+}
+
+figure .navi {
+    position: absolute;
+    width: 90%;
+    bottom: 10vh;
+    left: 5%;
+    perspective: 800px;
+}
+figure .navi li {
+    width: 20%;
+    height: 40px;
+    float: left;
+    box-sizing: border-box;
+    padding: 0px 20px;
+}
+figure .navi li a {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 1px solid #333;
+    font: 14px/40px "arial";
+    color: #333;
+    text-align: center;
+    border-radius: 20px;
+    transition: 1s;
+}
+figure .navi li.on a {
+    background: rgba(0,0,0, .5);
+    color: #fff;
+    transform: rotateY(360deg);
+    font-weight: bold;
+}
+
+#circle {
+    position: fixed;
+    top: 50%;
+    margin-top:-160px;
+    right: -160px;
+    transition: 1s;
+}
+#circle.rot1 {
+    transform: rotate(0deg);
+}
+#circle.rot2 {
+    transform: rotate(60deg);
+}
+#circle.rot3 {
+    transform: rotate(120deg);
+}
+#circle.rot4 {
+    transform: rotate(180deg);
+}
+#circle.rot5 { /*rot1 ~ rot5는 index의 번호 ->클래스로 */
+    transform: rotate(240deg);
+}

@@ -1,0 +1,90 @@
+
+.container{
+    width: 100%;
+    height: 100vh;
+    background: gray;
+
+}
+
+#click-img{
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    background-repeat: no-repeat;
+    background-size: 100%;  
+}
+#click-img.active{
+    -webkit-animation: click-img 0.2s, hide-img 0.5s 0.5s forwards;
+            animation: click-img 0.2s, hide-img 0.5s 0.5s forwards;
+}
+#click-img.active.bg01{
+    
+    background-image: url('../images/layer-fish.png');
+}
+#click-img.active.bg02{
+
+    background-image: url('../images/layer-grass.png');
+}
+#click-img.active.bg03{
+
+    background-image: url('../images/layer-meat.png');
+}
+#click-img.active.bg04{
+
+    background-image: url('../images/layer-rainbow.png');
+}
+#click-img.active.bg05{
+
+    background-image: url('../images/layer-sushi.png');
+}
+@-webkit-keyframes click-img{
+
+    0%{
+        -webkit-transform: rotate(90deg) scale(0);
+                transform: rotate(90deg) scale(0);
+        opacity: 0;
+    }
+    
+    100%{
+        -webkit-transform: rotate(0deg) scale(1);
+                transform: rotate(0deg) scale(1);
+        opacity: 1;
+       
+    }
+
+    }
+@keyframes click-img{
+
+    0%{
+        -webkit-transform: rotate(90deg) scale(0);
+                transform: rotate(90deg) scale(0);
+        opacity: 0;
+    }
+    
+    100%{
+        -webkit-transform: rotate(0deg) scale(1);
+                transform: rotate(0deg) scale(1);
+        opacity: 1;
+       
+    }
+
+    }
+
+@-webkit-keyframes hide-img{
+    100%{
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+                transform: scale(0.7);
+
+    }
+}
+
+@keyframes hide-img{
+    100%{
+        opacity: 0;
+        -webkit-transform: scale(0.7);
+                transform: scale(0.7);
+
+    }
+}
+

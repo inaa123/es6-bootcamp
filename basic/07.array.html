@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        /*
+        .map(함수명) 메서드
+        배열의 값들을 map으로 호출해서 새로운 배열로 생성
+        한번만 실행하고 빈 요소로 받은건 실행하지 않는다.(호출할 값이 없기 때문)
+        기존의 배열은 건들지 않고 사용
+        */
+
+        let num1 = [1,2,3,4,5];
+        let calcNum = num1.map(Math.sqrt)//Math.sqrt 제곱근(루트)
+
+        console.log(num1)
+        console.log(calcNum)
+        //배열의 값을 객체화 해서 새로운 배열로 변환
+
+        let lolHeroPos = [
+            {position : '원딜', heroName : '애쉬'},
+            {position : '서포터', heroName : '브라움'},
+            {position : '미드', heroName : '카르마'},
+            {position : '정글', heroName : '리신'},
+            {position : '탑', heroName : '다리우스'}
+        ];
+
+        
+
+
+        const getHero = (a) => {
+            return [a.position, a.heroName].join()
+            //join() = 배열을 문자열로 변환해서 반환하는 메서드
+        }
+        
+
+        let newHero = lolHeroPos.map(getHero);
+        console.log(newHero)
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

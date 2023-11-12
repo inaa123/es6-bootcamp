@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = () => {
+            class FontStyle{
+                constructor(el, size, color){
+                    this.el = el;
+                    this.size = size;
+                    this.color = color;
+
+                    document.querySelector(this.el).style.fontSize = this.size;
+                    document.querySelector(this.el).style.color = this.color;
+                }
+            }
+            let font01 = new FontStyle('.text01', '60px', 'blue');
+            let font02 = new FontStyle('.text02', '100px', 'coral');
+            let font03 = new FontStyle('.text03', '30px', 'red');
+        }
+    </script>
+</head>
+<body>
+    <p class="text01">text01</p>
+    <p class="text02">text02</p>
+    <p class="text03">text03</p>
+</body>
+</html>

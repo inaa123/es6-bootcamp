@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <style>
+        *{
+            padding : 0;
+            margin: 0;
+        }
+        .slider{
+            width: 100%;
+            position: relative;
+            top: 0;
+            left: 0;
+            overflow: hidden; /*가로 스크롤바 없앰*/
+        }
+        .slider img{
+            display: block;
+            object-fit: cover;
+        }
+        /*button custom*/
+        .btns{
+            width: 120px;
+            height: 60px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 20px; /*prev, next버튼에 position이 들어가 있어서 따로 안잡아도됨!*/
+            z-index: 99;
+            transition: 400ms;
+        }
+        .btns:before{
+            content: "";
+            width: 50px;
+            height: 2px;
+            display:block;
+            background: #fff;
+            position: absolute;
+            top: 50%;
+
+        }
+        .btns:after{
+            content: "";
+            width: 0;
+            height: 100%;
+            position: absolute;
+            top: 0px;
+            background: #fff;
+            transition: 400ms;
+            z-index: -1;
+        }
+        .btns:hover:after{
+            width: 120%;
+        }
+        .btns:hover:before{
+            background: cyan;
+        }
+        .btns:hover{
+            color: #000;
+        }
+        .swipre-button-prev{
+            justify-content: end;
+        }
+        .swiper-button-next{
+            justify-content: start;
+        }
+        .swiper-button-prev,
+        .swiper-button-prev:before,
+        .swiper-button-prev:after{
+            left: 0;
+        }
+        .swiper-button-next,
+        .swiper-button-next:before,
+        .swiper-button-next:after{
+            right: 0;
+        }
+
+        /*dot*/
+        .swiper-pagination{
+            bottom: 200px!important;
+            display:flex;
+            gap: 10px;
+            justify-content: center;
+            align-items: center;
+            height: 40px; /*높이 고정. 20-40 40-20 바뀌면서 가운데로 맞추기 위해 움직이기 때문에 높이값을 고정해준다.*/
+        }
+        .swiper-pagination-bullet{
+            background: #fff;
+            width: 3px;
+            height: 20px;
+            transition: 400ms;
+            border-radius: 0;
+            opacity: 1;
+        }
+
+        .swiper-pagination-bullet-active{
+            background: cyan;
+            height: 40px;
+        }
+
+        /*wall*/
+        .wall{
+            position : absolute;
+            top: 0px; /*left는 X*/
+            width: 1px;
+            height: 100%;
+            background: #fff;
+        }
+        .wall.one{
+            left:0px;
+        }
+
+        .wall.two{
+            left:25%;
+        }
+
+        .wall.three{
+            left: 50%;
+        }
+
+        .wall.four{
+            left: 75%;
+        }
+        .swiper-slide-active .wall{
+            animation-name: wall_ani;
+        }
+        .swiper-slide-active .wall.one{
+            animation-duration: 500ms;
+        }
+        .swiper-slide-active .wall.two{
+            animation-duration: 750ms;
+        }
+        .swiper-slide-active .wall.three{
+            animation-duration: 1000ms;
+        }
+        .swiper-slide-active .wall.four{
+            animation-duration: 1250ms;
+        }
+
+        @keyframes wall_ani{
+            0%{
+                width: 100%;
+                background: #fff;
+            }
+            100%{
+                width: 1px;
+                background : #000;
+            }
+        }
+
+        /*img show*/
+        .swiper-slide-active img{
+            animation: img_ani 5000ms;
+        }
+
+        @keyframes img_ani{
+            0%{
+                transform: scale(1.05);/*5%키워둠*/
+            }
+            100%{
+                transfomr: scale(1);
+            }
+        }
+
+        /*progress bar*/
+        .swiper-slide-active:after{
+            content: "";
+            width: 100%;
+            height: 20px;
+            background:cyan;
+            position: absolute;
+            left:0;
+            bottom: 0;
+            animation: progress_ani 5000ms linear; /*speed 5000에 맞춘것. */
+        }
+
+        @keyframes progress_ani{
+            0%{
+                width: 0;
+            }
+            100%{
+                width: 100%;
+            }
+        }
+
+    </style>
+    <script>
+        window.onload = () => {
+            const slider = new Swiper('.swiper-container', {
+                allowTouchMove : false, //스와이프 기능 제거
+                speed : 5000,//transition 시간 평균 0.8초, 그 이상은 루즈하다 생각할 수 있음
+                loop : true,
+                autoplay : {
+                    delay : 0,
+                },
+                navigation : {
+                    prevEl : '.swiper-button-prev',
+                    nextEl : '.swiper-button-next'
+                },
+                pagination : {
+                    el :'.swiper-pagination',
+                    clickable: true,
+                },
+                effect : 'creative', //사용자가 임의로 조작해서 바꿈
+                creativeEffect:{
+                    prev : {
+                        opacity : 0
+                    },
+                    next:{
+                        opacity:1
+                    }
+                }
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <div class="swiper-container slider"> <!--swiper-container : 스와이퍼 슬라이더를 감싸는 최상위 컨테이너의 이름(변경하면X, 추가하고 싶으면 ID를 넣든지 클래스 추가하면 됨)-->
+        <div class="swiper-wrapper"> <!--swiper-container다음에 와야 하는 클래스명이다. ul의 기능을 해주는 것?, 라이브러리에선 div로 만드는게 더 낫다-->
+            <div class="swiper-slide item01"> <!--swiper-slide : swiper가 작동하는 가장 작은 단위의 클래스명. li의 개념-->
+                <img src="./images/visual1.png" alt="비쥬얼이미지">
+                <div class="wall one"></div>
+                <div class="wall two"></div>
+                <div class="wall three"></div>
+                <div class="wall four"></div>
+            </div>
+
+            <div class="swiper-slide item02"> 
+                <img src="./images/visual2.png" alt="비쥬얼이미지">
+                <div class="wall one"></div>
+                <div class="wall two"></div>
+                <div class="wall three"></div>
+                <div class="wall four"></div>
+            </div>
+
+            <div class="swiper-slide item03"> 
+                <img src="./images/visual3.png" alt="비쥬얼이미지">
+                <div class="wall one"></div>
+                <div class="wall two"></div>
+                <div class="wall three"></div>
+                <div class="wall four"></div>
+            </div>
+        </div><!--swiper-wrapper-->
+        <div class="swiper-button-prev btns">PREV</div>
+        <div class="swiper-button-next btns">NEXT</div>
+        <div class="swiper-pagination"></div>
+    </div><!--container-->
+</body>
+</html>

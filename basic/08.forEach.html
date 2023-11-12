@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>forEach</title>
+    <script>
+        /*
+        forEach
+        -배열의 요소를 반복하고 새 배열을 만들지 않고 요소에 대한 작업을 수행
+        -값을 반환하지 않기 때문에 기존의 요소 수정에 주로 사용
+        -콜백 함수로 원본 내용이 수정
+        - 새 배열을 수정하지 않고 각 배열의 요소에 대한 수정과 같은 작업을 할때
+        (새 배열에 업데이트도 가능)
+        
+        
+        map()
+        배열의 요소에 반복하고 각 요소에 변환된 값을 적용하고, 그 값들을 새 배열에
+        적용하는데 적용
+        -원본 배열에 각 요소에 적용된 함수에 적용된 결과값이 새 배열에 담겨서 반환
+        -원본은 건들지 않고 오로지 값만 참조해서 새로운 배열에 반환
+        -원본 배열의 각 요소를 반환해서 새로운 배열을 만들어야 할때
+
+        */
+
+
+        let num = [1,2,3,4];
+
+        //foreach()
+        num.forEach(function(a){
+            console.log(a * a);
+        })
+
+        //map
+        const result = num.map(function(a){
+            return a * a
+        })
+        console.log(result)
+
+        console.clear()
+
+        window.onload = ()=>{
+            let carBrand = ['현대','기아','볼보','bmw','제네시스','아우디','벤츠'];
+            let list = document.querySelector('.list');
+            let listItem = '';
+
+
+            carBrand.forEach(brand);
+            /*
+            foreach에서 반복하는 요소를 참조할때 3개의 매개변수를 활용할 수 있다.
+            forEach(el,index,array)의 순서로 사용할 수 있다.
+            
+            */
+            function brand(el,idx){
+                //index는 i, idx로 줄여서 자주 사용
+                //el = e는 event와 겹칠수 있기 때문에 el, item로 자주 변환해서 사용
+                //매개변수의 뜻보다는 순서에 의해서 값이 결정된다.
+
+                listItem += `<li>${idx+1}번 ${el}입니다.`;
+            }
+            list.innerHTML = listItem;
+        }
+
+        //foreach를 이용해서 새 배열에 값을 담는 방법
+        let num02 = [1,2,3,4,5];//참조할 배열값
+        let resultArr = []; //새 값을 들어올 빈 배열
+
+        num02.forEach(function(a){
+            let result = a * a;
+            resultArr.push(result)
+        })
+        console.log(resultArr)
+
+
+
+
+
+
+    </script>
+</head>
+<body>
+    <h1>자동차 브랜드 리스트</h1>
+    <ul class="list">
+
+    </ul>
+</body>
+</html>

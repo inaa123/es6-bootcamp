@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        /*
+        class
+        -class는 일종의 함수지만 function대신 class라는 키워드로 작성한다.
+        -함수와 같이 변수 선언과 함수식 선언 둘 다 지원한다.
+        -하나의 클래스로 여러개의 인스턴스를 생성한다.(공장의 틀과같다.)
+        -객체를 생성하기 위한 값과 메서드들이 정의되어 있는 공장 틀과 같다.
+        */
+
+        class MyCar{
+            //클래스와 함수를 구분하기 위해서 클래스는 대문자로 시작한다.
+            constructor(name){
+                this.brand = name; // constructor의 매개변수로 넣은 name이 this의 brand이름이 된다.
+
+                /*
+                constructor() = 인스턴스를 생성하고 인스턴스 안에 있는 내용들을 초기화 하기 위한 메서드다.
+                하나의 class안에는 하나의 constructor()만 사용할 수 있다.
+
+                인스턴스를 생성할 때 new연산자와 함께 생성되는 것이 constructor()다.
+                constructor()에 전달된 값은 인스턴스에 적용된다.
+
+                constructor()를 생략하게 되면 클래스에 constructor()가 생성된 것과 동일하게 적용된다.
+                그러나 빈 객체를 생성하기 때문에 만약에 인스턴스를 계속적으로 초기화해서 사용해야 한다면 constructor()를 생략할 수 없다.
+                constructor()는 인스턴스의 생성과 동시에 내용을 초기화 하는 역할을 한다.
+
+
+                */
+            }
+        }
+
+        let car1 = new MyCar('벤츠'); //인스턴스의 생성
+        console.log(car1);
+        console.log(car1.brand);
+        let car2 = new MyCar('제네시스');
+        console.log(car2.brand);
+
+        class MyCar02{
+            brand = 'bmw';
+            //constructor가 생략되는 경우는 매개변수로 값을 전달하는 방식이다.
+            //constructor값이 정해져 있는 경우는 생략해도 된다.(초기화가 필요없는 경우)
+        }
+        let car3 = new MyCar02('아우디'); //값을 바꿔줄 수 없다.
+        let car4 = new MyCar02('아우디');
+        console.log(car3.brand);
+        console.log(car4.brand);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+   
+    <script src="es6.js"></script>
+
+    <style>
+        body,html{
+            background: gray;
+        }
+        .inner{
+    width: 1170px;
+    margin: 0px auto;
+    position: relative;
+}
+.hidden{
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    overflow: hidden;
+    clip: rect(0px 0px 0px 0px);
+    margin: -1px;
+}
+        *{
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            text-decoration: none;
+        }
+        header.header-wrapper{
+    width: 100%;
+    height: 120px;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    background-color: transparent;
+    z-index: 9999;
+}
+
+header.header-wrapper > div.inner{
+    height: 100%;
+}
+div.header-top-wrapper{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0px;
+}
+div.header-top-wrapper > a{
+    color: #ffffff;
+    font-size: 11px;
+    border-right: solid 1px #ffffff;
+    padding: 0px 14px;
+}
+div.header-top-wrapper > a.sns{
+    border-right: none;
+    padding: 0px;
+}
+div.header-top-wrapper > a.sns:after{
+    content: "";
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-size: 56px 14px;
+    background-repeat: no-repeat;
+    background-image: url('../images/icon_sns_01.png');
+}
+div.header-top-wrapper > a.instagram{
+    padding: 0px 6px 0px 14px;
+}
+div.header-top-wrapper > a.instagram:after{
+    background-position: -28px 0px;
+}
+div.header-top-wrapper > a.facebook:after{
+    background-position: -42px 0px;
+}
+/*header-top end*/
+
+
+div.header-bottom-wrapper{
+    width:100%;
+    height: 90px;
+    background-color: #ffffff;
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    box-sizing: border-box;
+    justify-content: space-between;
+    position: relative;
+}
+
+h1.logo a{
+    display: block;
+    width: 109px;
+    height: 47px;
+    background-image: url('../images/h1_logo.png');
+    background-size: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+
+ul.gnb{
+    display: flex;
+    height: 100%;
+}
+ul.gnb > li{
+    padding: 0px 30px;
+    position: relative;
+}
+ul.gnb > li > a{
+    display: block;
+    width: 100%;
+    height: 100%;
+    font:bold 16px 'Roboto';
+    line-height: 90px;
+}
+ul.gnb > li > a:after{
+    content: "";
+    display: block;
+    width: 0px;
+    height: 6px;
+    background-color: #f6ca00;
+    margin:-6px auto 0px;
+    transition: all 0.3s;
+}
+ul.gnb > li:hover > a:after{
+    width: 100%;
+}
+ul.gnb > li:hover > a{
+    color: #f6ca00;
+}
+/*active*/
+ul.gnb > li.on > a:after{
+    width: 100%;
+}
+ul.gnb > li.on > a{
+    color: #f6ca00;
+}
+/*submenu*/
+ul.submenu-list{
+    position: absolute;
+    top: 90px;
+    left: 0px;
+    padding-top: 10px;
+    text-align: center;
+    width: 100%;
+    z-index: 99;
+    display: none;
+}
+ul.submenu-list >li{
+    height: 40px;
+    line-height: 40px;
+}
+ul.submenu-list > li > a{
+    color: #fff;
+    font-size: 13px;
+    display: inline-block;
+    line-height: 120%;
+}
+ul.submenu-list > li:hover > a{
+    text-decoration: underline;
+}
+ul.submenu-list > li.on > a{
+    text-decoration: underline;
+}
+div.main-bg{
+    width: 100%;
+    height: 350px;
+    position: absolute;
+    top: 90px;
+    left: 0px;
+    z-index: 10;
+    background-color: rgba(255,255,255,0.7);
+
+}
+    </style>
+</head>
+<body>
+    <header class="header-wrapper">
+        <div class="inner">
+            <div class="header-top-wrapper">
+                <a href="#" class="login" title="로그인 페이지 이동">로그인</a>
+                <a href="#" class="member" title="회원가입 페이지 이동">회원가입</a>
+                <a href="#" class="sns instagram" title="인스타그램 페이지 이동">
+                    <span class="hidden">인스타그램</span>
+                </a>
+                <a href="#" class="sns facebook" title="페이스북 페이지 이동">
+                    <span class="hidden">페이스북</span>
+                </a>
+            </div>
+            <!--header-top-->
+
+            <div class="header-bottom-wrapper">
+                <h1 class="logo">
+                    <a href="#" title="홈으로 이동">
+                        <span class="hidden">한솥 로고</span>
+                    </a>    
+                </h1>
+
+                <nav class="gnb-wrapper">
+                    <ul class="gnb">
+                        <li>
+                            <a href="#" title="">BRAND</a>
+                            <ul class="submenu-list">
+                                <li><a href="#">브랜드 스토리</a></li>
+                                <li><a href="#">브랜드 철학</a></li>
+                                <li><a href="#">브랜드 유산</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="">ESG</a>
+                            <ul class="submenu-list">
+                                <li><a href="#">ESG경영이란?</a></li>
+                                <li><a href="#">환경보호(Environment)</a></li>
+                                <li><a href="#">사회공헌(Social)</a></li>
+                                <li><a href="#">윤리경영(Govermance)</a></li>
+                                <li><a href="#">세계40대 브랜드 선정</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="">MENU</a>
+                            <ul class="submenu-list">
+                                <li><a href="#">전체메뉴</a></li>
+                                <li><a href="#">식재료 이야기</a></li>
+                                <li><a href="#">페루찬차마요커피</a></li>
+                                <li><a href="#">단체주문</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="">STORE</a>
+                            <ul class="submenu-list">
+                                <li><a href="#">주변점포찾기</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="">EVENT</a>
+                            <ul class="submenu-list">
+                                <li><a href="#">이 달의 이벤트</a></li>
+                                <li><a href="#">신규점 오픈 이벤트</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="">FRANCHISE</a>
+                            <ul class="submenu-list">
+                                <li><a href="#">Why 한솥 가맹점</a></li>
+                                <li><a href="#">성공수기</a></li>
+                                <li><a href="#">창업개설절차</a></li>
+                                <li><a href="#">예상창업비용</a></li>
+                                <li><a href="#">창업문의</a></li>
+                                <li><a href="#">창업설명회 일정.신청</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#" title="">HANSOT</a>
+                            <ul class="submenu-list">
+                                <li><a href="#">한솥의 약속</a></li>
+                                <li><a href="#">한솥의 비전</a></li>
+                                <li><a href="#">연혁&수상</a></li>
+                                <li><a href="#">한솥 NEWS</a></li>
+                                <li><a href="#">오시는 길</a></li>
+                                <li><a href="#">고객센터</a></li>
+                                <li><a href="#">인재채용</a></li>
+                            </ul>
+                        </li> 
+                    </ul>
+                    
+                </nav>
+                </div>
+                </div>
+                </header>
+</body>
+</html>

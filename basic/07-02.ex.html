@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+
+        let student = [
+            {classId : 1, name : 'kim', score : 80},
+            {classId : 2, name : 'park', score : 70},
+            {classId : 3, name : 'pyo', score : 26},
+            {classId : 4, name : 'kim', score : 71},
+        ]
+        //ex) kim (ID : 1 ) - score : 80
+
+        let stScore = student.map(result);
+
+        function result(a){
+            return `${a.name} (ID : ${a.classId}) - score : ${a.score}`
+        }
+
+        console.log(stScore)
+
+
+
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
