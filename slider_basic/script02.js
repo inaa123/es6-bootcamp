@@ -71,7 +71,7 @@ class Slider{//class함수는 일반함수와 구별하기 위해 대문자로 �
                     this.activeSlide(activeIndex, this.btnsItem);
                     this.activeSlide(activeIndex, this.panelItem);
                     if(this.opt.callback){ //callback이 있으면 activeIndex +1해준다.
-                        this.opt.callback(activeIndex + 1);
+                        this.opt.callback(activeIndex + 1); //html script의 callback의 index가 activeIndex + 1 값을 전달 받음
                     }
 
                     this.enableClick = false;
@@ -115,8 +115,7 @@ class Slider{//class함수는 일반함수와 구별하기 위해 대문자로 �
             내부 함수에서는 this를 받아올 경우 인스턴스가 아닌 undefined를 반환한다.
             즉, 전달받지 못한다는 의미다.
 
-            그래서 상위 함수에서 this를 변수에 저장해서 내부함수에 변수로 전달하게 되면 변수에는 this의 값이 고정되어 저장되어 있으므로
-            같은 선택자를 선택할 수 있게 된다.
+            그래서 상위 함수에서 this를 변수에 저장(여기서 self)해서 내부함수에 변수로 전달하게 되면 변수에는 this의 값이 고정되어 저장되어 있으므로 같은 선택자를 선택할 수 있게 된다.
             */
 
             if(progress < 0){
@@ -137,7 +136,7 @@ class Slider{//class함수는 일반함수와 구별하기 위해 대문자로 �
             //console.log(result);
             if(opt.prop === 'opacity'){
                 el.style[opt.prop] = result;
-                //self가 아닌 el로 잡아야함.
+                //self가 아닌 el로 잡아야함. self는 많은 덩어리, 다 못잡음~. animate를 실행시키는 el이 되어야 한다.
             }else {
                 el.style[opt.prop] = result + 'px';
             }

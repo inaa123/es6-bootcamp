@@ -14,7 +14,7 @@
                 btns : '.navi',
                 panel : '.panel',
                 speed : 500,
-                callback : (index)=>{ //callback도 옵션(opt)임
+                callback : (index)=>{ //callback도 옵션(opt)임. js에서 opt.panel, opt.btns넣은것 처럼 callback도 집어넣어줘야 한다.
                     let circle = document.querySelector('#circle');
                     circle.className = '';
                     circle.classList.add(`rot${index}`);

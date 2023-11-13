@@ -8,7 +8,8 @@
 
 window.onload = () => {
 
-    const chaImg = document.querySelector('.pic li.on img'); //보여지는 캐릭터이미지가 하나니까 굳이 all을 사용하지 않고 하나만 찾되, 선택자로 on이 들어간이미지를 찾으면 된다.
+    const chaImg = document.querySelector('.pic li.on img'); //.pic안의 li중 on이 들어간 img찾기
+    //보여지는 캐릭터이미지가 하나니까 굳이 all을 사용하지 않고 하나만 찾되, 선택자로 on이 들어간이미지를 찾으면 된다.
     const deco2 = document.querySelector('.deco2 img');
     const deco3 = document.querySelector('.deco3 img');
 
@@ -72,7 +73,7 @@ window.onload = () => {
 
     function moveImg(el, event, speed, reverse){ //매개변수4개 (reverse : true/false)
         let x,y;
-        if(reverse){ //true면  마우스방향과 반대로(-)
+        if(reverse){ //reverse가 true면  마우스방향과 반대로(-)
             x = -event.pageX;
             y = -event.pageY;
         }else {
