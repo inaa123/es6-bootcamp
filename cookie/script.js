@@ -22,7 +22,7 @@ window.onload = () => {
         //console.log(this); //window(화살표함수의 this는 window) but windonw가 되면 안되기 때문에, this의 의미가 이벤트? 대상이 되어야 하기 때문에 일반함수를 써야한다.
     })
     document.querySelector('.del').addEventListener('click', function(){
-        setCookie('popUp', 'done', 0);
+        setCookie('popUp', 'done', 0); //0을 넣으면 늘릴 시간 없으므로 현재시간.
     });
 }
 
