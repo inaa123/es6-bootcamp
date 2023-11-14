@@ -9,11 +9,14 @@ window.onload = () => {
     //indexOf = 특정한 곳의 문자를 찾는 것. 그 위치 값 반환. 찾을 수 없으면 -1(반환할 값이 없다.)
     console.log(isCookie);
 
-    if(isCookie === -1) {
+    if(isCookie === -1) { // 'popUp=done이 없다는 의미로 onload실행될때마다 #popUp block한다. 쿠키를 삭제했다는 의미가 아니므로
         document.querySelector('#popUp').style.display = 'block';
-    }else{
+    }else{ // 어떠한 값이라도 있으면 popUp=done이 있다는 의미니, 팝업창 안나와도 됨.
         document.querySelector('#popUp').style.display = 'none';
-    }
+    }  
+    //체크박스는 쿠키의 유무를 체크해야하며 removePopUp에서 해야함
+  
+
     document.querySelector('.closeBtn').addEventListener('click', function(){
         removePopUp(this); //this: document.querySelector('.closeBtn'), this를 이용해서 선택자가 좁아짐
         //console.log(this); //window(화살표함수의 this는 window) but windonw가 되면 안되기 때문에, this의 의미가 이벤트? 대상이 되어야 하기 때문에 일반함수를 써야한다.
@@ -74,8 +77,8 @@ function createPopUp(opt){
     xhr.onreadystatechange = () => {
         //console.log(xhr.readyState);
         //console.log(xhr.status); //200 현재 내 상태
-        if(xhr.readyState === XMLHttpRequest.DONE){
-            if(xhr.status === 200 ){ //성공(200)
+        if(xhr.readyState === XMLHttpRequest.DONE){ //DONE : 4, 결과요청했으면
+            if(xhr.status === 200 ){ //성공(200)했으면
                 console.log('성공')
                 content.innerHTML = xhr.responseText;
                 //responseText = 응답받은 데이터를 문자로 변환
@@ -88,20 +91,22 @@ function createPopUp(opt){
     /*xhr.onreadystatechange = XMLHttpRequest에서 받아온 state의 값이 변경되면 호출되는 이벤트다.
 
     readyState의 값에 따라서 처리결과를 숫자로 전송해준다.
-    0(unset) : 아직 요청이 생성된 상태지만 아직 요청은 하지 않은 상태
+    0(unset) : 아직 요청이 생성된 상태지만 아직 서버에 요청은 하지 않은 상태
             (어떤 값을 보낼 준비만 한 상태, 이메일 작성만한 상태(저장할수도 삭제할수도 전송할 수도있음))
     1(open) : 함수를 호출한 상태로 open()을 실행한 상태로 보며, 요청이 초기화된 상태
-    2(header_received) : 함수를 호출하고, 결과를 요청한 상태로, 보통 send()로 수신한 상태에서 출력한다.
-        (어떤 값을 보낼 건데, 결과값(수신여부)을 보내달라..?)
+    2(header_received) : 함수를 호출하고, 결과를 요청한 상태로, 보통 send()로 수신한 상태에서 출력한다. (어떤 값을 보낼 건데, 결과값(수신여부)을 알려줘)
     3(loading) : 서버에 요청한 결과를 받아오는 중이다.
     4(done) : 서버에 요청한 결과를 받은 상태다.(결과는 성공 / 실패로만 나옴)
 
     200 = 서버에 수신이 성공
-    404 = 서버에 수신이 실패
+    404 = 서버에 수신이 실패(대표적으로 404)
     */
 }
 
+
+//닫기 버튼 클릭하면 나 뿐만아니라 전체영역이 없어져야 함.
 function removePopUp(el){
+    //체크박스 체크유무에 따라 값이 실행되도록, onload시 isCookie유무 판단하라 수 있음
     const isChecked = el.parentNode.querySelector('input[type=checkbox]').checked; 
     const popUpName = el.parentNode.parentNode.getAttribute('id');
     //console.log(popUpName);
@@ -111,10 +116,11 @@ function removePopUp(el){
     el.parentNode.parentNode.style.display = 'none'; //화면에서 제거 (새로고침하면 팝업창 다시 뜸)
     //닫기버튼 누르면 아예 없어지게
     el.parentNode.parentNode.parentNode.removeChild(el.parentNode.parentNode); //구조상에서 삭제. parentNode를 더 추가한 이유 body상에서 없애야 하기 때문!
+    //el.parentNode = <div class="wrap" >
+    //el.parentNode.parentNode = <aside id="popUp">
 
     if(isChecked){//isChecked가 true면 setCookie함수 실행(매개변수 3개가 있는)
-        setCookie(popUpName, 'done', 1); //popUpName대신 'popUp'으로 해도 상관없음
-        
+        setCookie(popUpName, 'done', 1); //popUpName대신 'popUp'으로 해도 상관없음, 'done'은 popUp=done의 done 
     }
 }
 

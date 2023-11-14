@@ -1,6 +1,6 @@
 
 class MotionMenu{
-    constructor(opt){ //인스턴스 만들 때마다 초기화
+    constructor(opt){ //인스턴스 만들 때마다 초기화시켜줌, constructor가 없으면 인스턴스 생성할 수 X
         //this.opt = opt;
         this.init(opt); //opt만 받아옴
         this.bindingEvent();
