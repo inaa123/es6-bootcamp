@@ -156,8 +156,6 @@ p{
     opacity: 1;
   }
 
-  
-
   .slider-active {
     position: fixed; /*화면만큼만 받아옴*/
   }
