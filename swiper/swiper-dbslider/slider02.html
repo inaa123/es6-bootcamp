@@ -27,9 +27,16 @@
             overflow: hidden;
         }
         .item img{
+            width: 100%;
             display: block;
             object-fit : cover;
-            width: 100%;
+            /*
+            object-fit
+            요소의 크기에 맞게 <img> 태그와 <video> 태그의 크기를 조정하는 방법으로 사용되는 속성
+            fill, contain, cover, none, scale-down
+            - cover : 요소의 가로나 세로크기에 가능한 맞춰져 크기가 조정되고, 비율은 고정된 상태입니다. 개체 크기에 맞게 잘립니다. 가득 채울때까지 확대됩니다.
+            */
+            
         }
 
         /* pagination */
@@ -177,12 +184,12 @@
         window.onload = () => {
             let bullet = ['충남내포신도시2차 대방 엘리움 더 센트럴(RH5-1BL)', '부산에코델타시티1차(31BL)', '화성동탄5차 문화복합(18BL)', '동탄2신도시 동탄역 대방 엘링움 더 시그니처(C18BL)'];
             const slider = new Swiper('.swiper-container', {
-                    slidesPerView : 2,
-                    spaceBetween : 40,
-                    autoHeight: true, /*item마다 높이값을 따로 받아할때 autoHeight true를 넣는다. 부모요소의 높이값이 아닌, 아이템마다(객체)의 높이값을 받아오게 된다.*/
-                    loop: true,
-                    speed: 1000,
-                    autoplay : {
+                slidesPerView : 2,
+                spaceBetween : 40,
+                autoHeight: true, /*item마다 높이값을 따로 받아할때 autoHeight true를 넣는다. 부모요소의 높이값이 아닌, 아이템마다(객체)의 높이값을 받아오게 된다.*/
+                loop: true,
+                speed: 1000,
+                autoplay : {
                     delay: 5000,
                 },
                 pagination : {
